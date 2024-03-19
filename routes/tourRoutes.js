@@ -8,7 +8,9 @@ const tourRouter=express.Router();
 tourRouter
     .route('/')
     .get(tourContoller.getTours)
-    .post(tourContoller.createTour)
+    .post(tourContoller.checkRequestBody,tourContoller.createTour)  //chaining
+
+tourRouter.param('id',tourContoller.checkID);
 
 tourRouter  
     .route('/:id')
